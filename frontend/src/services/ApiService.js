@@ -31,6 +31,23 @@ async function takeAction(action, dataValue) {
 
 class ApiService {
 
+  static getCurrentUser() {
+    return new Promise((resolve, reject) => {
+      if (!localStorage.getItem("cardgame_account")) {
+        return reject();
+      }
+      takeAction("login", { username: localStorage.getItem("cardgame_account") })
+        .then(() => {
+          resolve(localStorage.getItem("cardgame_account"));
+        })
+        .catch(err => {
+          localStorage.removeItem("cardgame_account");
+          localStorage.removeItem("cardgame_key");
+          reject(err);
+        });
+    });
+  }
+
   static login({ username, key }) {
     return new Promise((resolve, reject) => {
       localStorage.setItem("cardgame_account", username);
@@ -45,6 +62,23 @@ class ApiService {
           reject(err);
         });
     });
+  }
+
+  static async getUserByName(username) {
+    try {
+      const rpc = new Rpc.JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
+      const result = await rpc.get_table_rows({
+        "json": true,
+        "code": process.env.REACT_APP_EOS_CONTRACT_NAME,    // contract who owns the table
+        "scope": process.env.REACT_APP_EOS_CONTRACT_NAME,   // scope of the table
+        "table": "users",    // name of the table as specified by the contract abi
+        "limit": 1,
+        "lower_bound": username,
+      });
+      return result.rows[0];
+    } catch (err) {
+      console.error(err);
+    }
   }
 
 }
