@@ -12,6 +12,10 @@ class App extends Component {
   constructor(props) {
     // Inherit constructor
     super(props);
+    // State for showing/hiding components when the API (blockchain) request is loading
+    this.state = {
+      loading: true,
+    };
     // Bind functions
     this.getCurrentUser = this.getCurrentUser.bind(this);
     // Call getCurrentUser before mounting the app
@@ -30,17 +34,36 @@ class App extends Component {
         setUser({ name: username });
       })
       // To ignore 401 console error
-      .catch(() => {});
+      .catch(() => {})
+      // Run the following function no matter the server return success or error
+      .finally(() => {
+        // Set the loading state to false for displaying the app
+        this.setState({ loading: false });
+      });
   }
 
   render() {
     // Extract data from state and props (`user` is from redux)
-    const { user: { name } } = this.props;
+    const { loading } = this.state;
+    const { user: { name, game } } = this.props;
 
+    // Determine the app status for styling
+    let appStatus = "login";
+    if (game && game.status !== 0) {
+      appStatus = "game-ended";
+    } else if (game && game.selected_card_ai > 0) {
+      appStatus = "card-selected";
+    } else if (game && game.deck_ai.length !== 17) {
+      appStatus = "started";
+    } else if (name) {
+      appStatus = "profile";
+    }
+
+    // Set class according to loading state, it will hide the app (ref to css file)
     // If the username is set in redux, display the Game component
     // If the username is NOT set in redux, display the Login component
     return (
-      <div className="App">
+      <div className={ `App status-${ appStatus }${ loading ? " loading" : "" }` }>
         { name && <Game /> }
         { !name && <Login /> }
       </div>

@@ -12,6 +12,10 @@ class Game extends Component {
   constructor(props) {
     // Inherit constructor
     super(props);
+    // State for showing/hiding components when the API (blockchain) request is loading
+    this.state = {
+      loading: true,
+    };
     // Bind functions
     this.loadUser = this.loadUser.bind(this);
     this.handleStartGame = this.handleStartGame.bind(this);
@@ -34,6 +38,8 @@ class Game extends Component {
         lost_count: user.lost_count,
         game: user.game_data,
       });
+      // Set the loading state to false for displaying the app
+      this.setState({ loading: false });
     });
   }
 
@@ -48,12 +54,12 @@ class Game extends Component {
   handlePlayCard(cardIdx) {
     // Extract `user.game` of `UserReducer` from redux
     const { user: { game } } = this.props;
-
     // If it is an empty card, not going to do anything
     if (game.hand_player[cardIdx] === 0) {
       return;
     }
-
+    // Show the loading indicator if the connection took too long
+    this.setState({ loading: true });
     // Send a request to API (blockchain) to play card with card index
     // And call `loadUser` again for react to render latest game status to UI
     return ApiService.playCard(cardIdx).then(()=>{
@@ -78,7 +84,8 @@ class Game extends Component {
   }
 
   render() {
-    // Extract data from user data of `UserReducer` from redux
+    // Extract data from state and user data of `UserReducer` from redux
+    const { loading } = this.state;
     const { user: { name, win_count, lost_count, game } } = this.props;
 
     // Flag to indicate if the game has started or not
@@ -88,12 +95,13 @@ class Game extends Component {
     // If game hasn't started, display `PlayerProfile`
     // If game has started, display `GameMat`, `Resolution`, `Info` screen
     return (
-      <section className="Game">
+      <section className={`Game${ (loading ? " loading" : "") }`}>
         { !isGameStarted ?
             <PlayerProfile
               name={ name }
               winCount={ win_count }
               lostCount={ lost_count }
+              onLogout={ this.handleLogout }
               onStartGame={ this.handleStartGame }
             />
           :
@@ -125,6 +133,29 @@ class Game extends Component {
                 onEndGame={ this.handleEndGame }
               />
             </div>
+        }
+        {
+          isGameStarted && loading &&
+          <div className="spinner">
+            <div className="image"></div>
+            <div className="circles">
+              <div className="circle">
+                <div className="inner"></div>
+              </div>
+              <div className="circle">
+                <div className="inner"></div>
+              </div>
+              <div className="circle">
+                <div className="inner"></div>
+              </div>
+              <div className="circle">
+                <div className="inner"></div>
+              </div>
+              <div className="circle">
+                <div className="inner"></div>
+              </div>
+            </div>
+          </div>
         }
       </section>
     )

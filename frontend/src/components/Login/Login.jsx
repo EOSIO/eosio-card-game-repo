@@ -18,6 +18,7 @@ class Login extends Component {
         key: '',
         error: '',
       },
+      isSigningIn: false,
     }
     // Bind functions
     this.handleChange = this.handleChange.bind(this);
@@ -38,6 +39,14 @@ class Login extends Component {
     });
   }
 
+  componentDidMount() {
+    this.isComponentMounted = true;
+  }
+
+  componentWillUnmount() {
+    this.isComponentMounted = false;
+  }
+
   // Handle form submission to call api
   handleSubmit(event) {
     // Stop the default form submit browser behaviour
@@ -46,6 +55,8 @@ class Login extends Component {
     const { form } = this.state;
     // Extract `setUser` of `UserAction` and `user.name` of UserReducer from redux
     const { setUser } = this.props;
+    // Set loading spinner to the button
+    this.setState({ isSigningIn: true });
     // Send a login transaction to the blockchain by calling the ApiService,
     // If it successes, save the username to redux store
     // Otherwise, save the error state for displaying the message
@@ -55,12 +66,17 @@ class Login extends Component {
       })
       .catch(err => {
         this.setState({ error: err.toString() });
+      })
+      .finally(() => {
+        if (this.isComponentMounted) {
+          this.setState({ isSigningIn: false });
+        }
       });
   }
 
   render() {
     // Extract data from state
-    const { form, error } = this.state;
+    const { form, error, isSigningIn } = this.state;
 
     return (
       <div className="Login">
@@ -94,7 +110,7 @@ class Login extends Component {
             { error && <span className="error">{ error }</span> }
           </div>
           <div className="bottom">
-            <Button type="submit" className="green">
+            <Button type="submit" className="green" loading={ isSigningIn }>
               { "CONFIRM" }
             </Button>
           </div>

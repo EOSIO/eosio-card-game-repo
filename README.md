@@ -1,4 +1,4 @@
-# Elemental Battles Tutorial Lesson 7
+# Elemental Battles Tutorial Lesson 8
 
 - *Account*: `player1`
 - *Private Key*: `5KFyaxQW8L6uXFB6wSgC44EsAbzC7ideyhhQ68tiYfdKQp69xKo`

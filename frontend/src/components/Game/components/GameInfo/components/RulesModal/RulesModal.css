@@ -1,0 +1,240 @@
+.RulesModal {
+  width: 100%;
+  height: 100%;
+  background: url("./images/bg_rules.png") no-repeat;
+  background-size: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: center;
+  animation: zoomRule .5s normal forwards ease-in-out; }
+
+@keyframes zoomRule {
+  from {
+    opacity: 0;
+    transform: scale(0); }
+  50% {
+    opacity: 1;
+    transform: scale(1.1); }
+  to {
+    opacity: 1;
+    transform: scale(1); } }
+  .RulesModal .title {
+    position: absolute;
+    top: -20px;
+    padding: 37px;
+    width: 278px;
+    height: 100px;
+    background-image: url("./images/title_rules.png");
+    background-size: 100%;
+    color: #e9fffb;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(244, 229, 191, 0.6);
+    font-size: 23px;
+    text-transform: uppercase; }
+  .RulesModal ul {
+    position: absolute;
+    top: 78px;
+    padding: 10px 55px 10px 10px;
+    width: 820px;
+    height: 470px;
+    background-image: url("./images/old_paper_bg.png");
+    background-position: -80px -50px;
+    background-size: 856.5px 488.5px;
+    border-top: 50px solid transparent;
+    border-left: 70px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 70px solid transparent;
+    color: #272727;
+    font-family: 'Almendra';
+    font-size: 20px;
+    overflow: hidden;
+    overflow-y: scroll;
+    user-select: text; }
+    .RulesModal ul::-webkit-scrollbar {
+      width: 5px;
+      /* for vertical scrollbars */ }
+    .RulesModal ul::-webkit-scrollbar-track {
+      background: #bb8339;
+      border-radius: 5px; }
+    .RulesModal ul::-webkit-scrollbar-thumb {
+      background: #734d17;
+      border-radius: 5px; }
+    .RulesModal ul > li {
+      position: relative;
+      margin-left: 53px;
+      margin-bottom: 20px;
+      letter-spacing: 0;
+      line-height: 1.1em; }
+      .RulesModal ul > li:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: -63px;
+        width: 53px;
+        height: 26.5px;
+        background-image: url("./images/bullets.png");
+        background-size: 100%; }
+      .RulesModal ul > li > div:first-child {
+        font-family: 'Almendra Bold';
+        font-size: 20px;
+        color: #312A25;
+        line-height: 28px; }
+      .RulesModal ul > li > div.divider {
+        content: "";
+        position: absolute;
+        left: -60px;
+        height: 20px;
+        width: 650px;
+        background: url("./images/divider_bar.png") center no-repeat;
+        background-size: 100%; }
+        .RulesModal ul > li > div.divider.top {
+          top: 80px; }
+        .RulesModal ul > li > div.divider.bottom {
+          bottom: -40px; }
+      .RulesModal ul > li > div.calculations {
+        margin-top: 100px;
+        margin-bottom: 70px; }
+        .RulesModal ul > li > div.calculations > div {
+          display: inline-flex;
+          padding-left: 155px;
+          margin-left: -40px;
+          height: 140px; }
+          .RulesModal ul > li > div.calculations > div.calculation2 {
+            background: url("./images/attack_power.png") 10px center no-repeat;
+            background-size: 150px; }
+          .RulesModal ul > li > div.calculations > div.calculation3 {
+            background: url("./images/card_type.png") 10px center no-repeat;
+            background-size: 150px; }
+          .RulesModal ul > li > div.calculations > div.calculation4 {
+            background: url("./images/special_card_0.png") 10px center no-repeat;
+            background-size: 150px; }
+          .RulesModal ul > li > div.calculations > div.calculation5 {
+            background: url("./images/special_card_3.png") 10px center no-repeat;
+            background-size: 150px; }
+          .RulesModal ul > li > div.calculations > div div.description {
+            margin: auto 0; }
+            .RulesModal ul > li > div.calculations > div div.description > div:first-child {
+              font-family: 'Almendra Bold';
+              font-size: 20px;
+              color: #312A25;
+              line-height: 28px;
+              margin-bottom: 4px; }
+      .RulesModal ul > li > dl,
+      .RulesModal ul > li > ol {
+        margin-top: 10px;
+        font-size: 20px; }
+      .RulesModal ul > li > dl {
+        position: relative;
+        top: 70px; }
+        .RulesModal ul > li > dl dt {
+          font-family: 'Almendra Bold';
+          font-size: 24px;
+          color: #312A25;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          text-align: center; }
+        .RulesModal ul > li > dl dd {
+          position: relative;
+          margin-top: 50px;
+          margin-left: 20px;
+          margin-bottom: 71px;
+          width: 500px;
+          background: url("./images/points_boxes_center.png");
+          background-size: 100%; }
+          .RulesModal ul > li > dl dd:before, .RulesModal ul > li > dl dd:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            left: 0;
+            background: no-repeat;
+            background-size: 100%; }
+          .RulesModal ul > li > dl dd:before {
+            height: 30px;
+            top: -27px;
+            background-image: url("./images/points_boxes_top.png"); }
+          .RulesModal ul > li > dl dd:after {
+            bottom: -30px;
+            height: 30px;
+            background-image: url("./images/points_boxes_bottom.png"); }
+          .RulesModal ul > li > dl dd > p {
+            padding: 5px 20px;
+            font-size: 20px;
+            display: table-cell;
+            vertical-align: middle;
+            overflow: hidden; }
+            .RulesModal ul > li > dl dd > p.calculation1 {
+              padding: 0 50px;
+              text-align: center; }
+              .RulesModal ul > li > dl dd > p.calculation1 span {
+                padding-top: 150px;
+                font-size: 20px;
+                float: left;
+                font-family: 'Almendra Bold';
+                color: #312A25;
+                letter-spacing: 1px; }
+              .RulesModal ul > li > dl dd > p.calculation1 .power,
+              .RulesModal ul > li > dl dd > p.calculation1 .bonus {
+                width: 150px;
+                background: top center no-repeat;
+                background-size: 100%;
+                letter-spacing: 0px;
+                display: inline-block; }
+              .RulesModal ul > li > dl dd > p.calculation1 .power {
+                background-image: url("./images/attack_power.png"); }
+              .RulesModal ul > li > dl dd > p.calculation1 .plus {
+                padding-top: 25px;
+                width: 90px;
+                height: 140px;
+                background: url("./images/plus_ic.png") center no-repeat;
+                background-size: 55px;
+                color: transparent; }
+              .RulesModal ul > li > dl dd > p.calculation1 .bonus {
+                background-image: url("./images/card_type.png"); }
+        .RulesModal ul > li > dl:last-child dd {
+          margin-bottom: 41px; }
+      .RulesModal ul > li > ol {
+        counter-reset: list; }
+        .RulesModal ul > li > ol > li {
+          margin-left: 16px;
+          margin-bottom: 5px;
+          background: url("./images/rules_bullet.png") center left no-repeat;
+          background-size: 15px;
+          background-position: 0px 6px;
+          padding-left: 20px;
+          line-height: 28px; }
+
+/*https://github.com/reactjs/react-modal/issues/191*/
+.ReactModal__Body--open {
+  overflow: hidden; }
+
+.ModalOverlay {
+  display: flex;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+  overflow-y: auto; }
+
+.ModalContent {
+  position: relative;
+  width: 954px;
+  height: 650px;
+  margin: auto;
+  border: 20px solid transparent;
+  outline: none; }
+  .ModalContent .ButtonClose {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    color: transparent;
+    display: block;
+    cursor: pointer; }
