@@ -1,0 +1,20 @@
+# dependencies
+node_modules/
+
+# production
+frontend/build
+
+#compile contract files
+**/*.abi
+**/*.wasm
+**/*.wast
+
+#blockchain data
+**/data/*
+
+# misc
+.DS_Store
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
