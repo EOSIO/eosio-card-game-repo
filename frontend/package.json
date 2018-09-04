@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eosjs": "20.0.0-beta1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "^1.1.4"
+    "react-modal": "^3.5.1",
+    "react-redux": "^5.0.7",
+    "react-scripts": "^1.1.4",
+    "redux": "^4.0.0",
+    "text-encoding": "^0.7.0"
   },
   "scripts": {
     "start": "react-scripts start",

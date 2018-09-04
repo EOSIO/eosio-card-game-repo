@@ -1,0 +1,86 @@
+.Game {
+  position: relative;
+  margin: 0 auto;
+  width: 1366px;
+  height: 768px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: top left;
+  transition: all 500ms ease-in-out !important; }
+  .Game .container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center; }
+  body.ReactModal__Body--open .Game .GameMat,
+  body.ReactModal__Body--open .Game .Info,
+  .App.status-card-selected .Game .GameMat,
+  .App.status-card-selected .Game .Info,
+  .App.status-game-ended .Game .GameMat,
+  .App.status-game-ended .Game .Info {
+    filter: blur(3px); }
+  .Game .spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    animation: dim 1s normal forwards ease .5s; }
+
+@keyframes dim {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+    .Game .spinner .image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -49px;
+      margin-left: -49px;
+      width: 98px;
+      height: 98px;
+      background: url("./images/logo_loading.png");
+      background-size: 100%; }
+    .Game .spinner .circles {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -51px;
+      width: 100px;
+      height: 102px;
+      animation: spin 1s infinite linear; }
+    .Game .spinner .circle {
+      position: absolute;
+      width: 100%;
+      height: 100%; }
+      .Game .spinner .circle .inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        border: 3px solid rgba(255, 201, 79, 0.3);
+        border-right: none;
+        border-top: none;
+        backgroudn-clip: padding;
+        box-shadow: inset 0px 0px 10px rgba(255, 255, 134, 0.17); }
+    .Game .spinner .circle:nth-of-type(0) .inner,
+    .Game .spinner .circle:nth-of-type(1) .inner,
+    .Game .spinner .circle:nth-of-type(2) .inner {
+      animation: spin 1s infinite linear; }
+    .Game .spinner .circle:nth-of-type(0) {
+      transform: rotate(0deg); }
+    .Game .spinner .circle:nth-of-type(1) {
+      transform: rotate(70deg); }
+    .Game .spinner .circle:nth-of-type(2) {
+      transform: rotate(140deg); }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

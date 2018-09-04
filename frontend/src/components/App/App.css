@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Almendra';
+  src: url("./fonts/almendra-regular-webfont.woff") format("woff2"), url("./fonts/almendra-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Almendra Bold';
+  src: url("./fonts/almendra-bold-webfont.woff2") format("woff2"), url("./fonts/almendra-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
+body {
+  font-family: 'Almendra Bold';
+  font-size: 14px;
+  letter-spacing: 2px;
+  user-select: none;
+  overflow: hidden; }
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("./images/Game_background.jpg");
+  background-size: cover; }
+  .App.loading {
+    opacity: 0; }
+  .App.status-login {
+    background-image: url("./images/Game_Login_background.jpg"); }
+  .App.status-profile {
+    background-image: url("./images/Game_Profile_background.jpg"); }

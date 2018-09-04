@@ -1,0 +1,76 @@
+.PlayerProfile {
+  position: relative;
+  width: 798px;
+  height: 558.5px;
+  background: url("./images/Game_Profile_frame.png") 15px 0 no-repeat;
+  background-size: 788px;
+  color: #fff;
+  font-size: 30px;
+  text-transform: uppercase; }
+  .PlayerProfile > div,
+  .PlayerProfile .record p,
+  .PlayerProfile .record span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto; }
+  .PlayerProfile .title {
+    position: absolute;
+    top: -90px;
+    width: 392px;
+    height: 163.5px;
+    background: url("./images/Game_logo.png");
+    background-size: 100%;
+    color: transparent; }
+  .PlayerProfile .welcome {
+    top: 105px;
+    color: #f4e5bf;
+    font-size: 22.5px;
+    text-shadow: 2px 2px 2px black; }
+  .PlayerProfile .username {
+    top: 135px;
+    font-size: 50px;
+    text-shadow: 2px 2px 2px black; }
+  .PlayerProfile .record {
+    top: 200px;
+    width: 500.5px;
+    height: 193.5px;
+    background-image: url("./images/Game_Profile_smframe.png");
+    background-size: 100%; }
+    .PlayerProfile .record p:nth-child(1), .PlayerProfile .record span:nth-child(1) {
+      top: 23px;
+      font-size: 15.4px; }
+    .PlayerProfile .record p:nth-child(2), .PlayerProfile .record p:nth-child(4), .PlayerProfile .record span:nth-child(2), .PlayerProfile .record span:nth-child(4) {
+      top: 65px;
+      color: #f4e5bf;
+      font-size: 36px; }
+      .PlayerProfile .record p:nth-child(2) .count, .PlayerProfile .record p:nth-child(4) .count, .PlayerProfile .record span:nth-child(2) .count, .PlayerProfile .record span:nth-child(4) .count {
+        margin-top: 30px;
+        font-size: 45px; }
+    .PlayerProfile .record p:nth-child(2), .PlayerProfile .record span:nth-child(2) {
+      left: 72px;
+      right: auto; }
+    .PlayerProfile .record p:nth-child(4), .PlayerProfile .record span:nth-child(4) {
+      left: auto;
+      right: 72px; }
+    .PlayerProfile .record p:nth-child(3), .PlayerProfile .record span:nth-child(3) {
+      top: 42px;
+      width: 138.5px;
+      height: 140.5px;
+      background-image: url("./images/Game_Profile_icon.png");
+      background-size: 100%;
+      color: transparent; }
+      .PlayerProfile .record p:nth-child(3):before, .PlayerProfile .record p:nth-child(3):after, .PlayerProfile .record span:nth-child(3):before, .PlayerProfile .record span:nth-child(3):after {
+        content: "";
+        position: absolute;
+        top: 67px;
+        width: 149px;
+        height: 7px;
+        background-image: url("./images/Game_Profile_divider_bar.png");
+        background-size: 100%; }
+      .PlayerProfile .record p:nth-child(3):before, .PlayerProfile .record span:nth-child(3):before {
+        left: -142px; }
+      .PlayerProfile .record p:nth-child(3):after, .PlayerProfile .record span:nth-child(3):after {
+        right: -142px; }
+  .PlayerProfile .buttons {
+    bottom: 85px; }
