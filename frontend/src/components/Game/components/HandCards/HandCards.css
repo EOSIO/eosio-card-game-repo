@@ -1,0 +1,7 @@
+.HandCards {
+  position: absolute;
+  left: 400px; }
+  .HandCards.ai {
+    top: 105px; }
+  .HandCards.player {
+    bottom: 115px; }

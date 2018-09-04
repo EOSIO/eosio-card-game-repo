@@ -64,6 +64,14 @@ class ApiService {
     });
   }
 
+  static startGame() {
+    return takeAction("startgame", { username: localStorage.getItem("cardgame_account") });
+  }
+
+  static playCard(cardIdx) {
+    return takeAction("playcard", { username: localStorage.getItem("cardgame_account"), player_card_idx: cardIdx });
+  }
+
   static async getUserByName(username) {
     try {
       const rpc = new Rpc.JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);

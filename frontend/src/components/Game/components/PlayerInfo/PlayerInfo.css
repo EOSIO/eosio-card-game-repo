@@ -1,0 +1,69 @@
+.PlayerInfo {
+  position: absolute;
+  left: 103px;
+  margin: 0 20px;
+  padding: 6px 0;
+  width: 266px;
+  height: 131px;
+  background-size: 100%;
+  color: #fff; }
+  .PlayerInfo .name {
+    font-size: 12px;
+    text-transform: uppercase; }
+  .PlayerInfo .name,
+  .PlayerInfo .lifepoints {
+    position: absolute;
+    left: 110px; }
+  .PlayerInfo .life {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 191px;
+    height: 83.5px;
+    background-size: 100%; }
+    .PlayerInfo .life:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-position: top right;
+      background-size: auto 100%; }
+    .PlayerInfo .life.life0:before {
+      width: 100%; }
+    .PlayerInfo .life.life1:before {
+      width: 52%; }
+    .PlayerInfo .life.life2:before {
+      width: 40%; }
+    .PlayerInfo .life.life3:before {
+      width: 28%; }
+    .PlayerInfo .life.life4:before {
+      width: 15%; }
+    .PlayerInfo .life.life5:before {
+      width: 0%; }
+  .PlayerInfo.ai {
+    top: 42px;
+    background-image: url("./images/CPU_component_frame.png"); }
+    .PlayerInfo.ai .name {
+      top: 53px; }
+    .PlayerInfo.ai .lifepoints {
+      top: 90px; }
+    .PlayerInfo.ai .life {
+      top: 36px;
+      background-image: url("./images/CPU_component_full.png"); }
+      .PlayerInfo.ai .life:before {
+        background-image: url("./images/CPU_component_empty.png"); }
+  .PlayerInfo.player {
+    bottom: 40px;
+    background-image: url("./images/Player_component_frame.png"); }
+    .PlayerInfo.player .name {
+      top: 23px; }
+    .PlayerInfo.player .lifepoints {
+      top: 62px; }
+    .PlayerInfo.player .life {
+      top: 8px;
+      background-image: url("./images/Player_component_full.png"); }
+      .PlayerInfo.player .life:before {
+        background-image: url("./images/Player_component_empty.png"); }

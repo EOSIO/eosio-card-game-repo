@@ -1,0 +1,34 @@
+.Info {
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  width: 230.5px;
+  height: 409px;
+  background: url("./images/Side_component_frame.png");
+  background-size: 100%;
+  transform: translateY(-50%);
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .Info > * {
+    margin: 1px 0; }
+  .Info > p {
+    margin-bottom: 220px;
+    width: 162px;
+    height: 51px;
+    background: url("./images/Side_component_label.png");
+    background-size: 100%;
+    line-height: 51px; }
+  .Info .round-number {
+    font-size: 16px;
+    vertical-align: 1px; }
+  .Info:after {
+    content: "";
+    position: absolute;
+    top: 105px;
+    width: 140px;
+    height: 140px;
+    background-image: url("./images/Side_component_diagram.png");
+    background-size: 100%; }

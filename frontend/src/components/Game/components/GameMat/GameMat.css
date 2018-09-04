@@ -1,0 +1,38 @@
+.GameMat {
+  width: 100%;
+  height: 100%;
+  background: url("./images/Game_board_wCards.png") no-repeat;
+  background-size: 100%;
+  border-collapse: collapse; }
+  .GameMat .deck {
+    position: absolute;
+    left: 173px;
+    padding: 65px 10px;
+    width: 162px;
+    height: 192px;
+    line-height: 1em;
+    text-transform: uppercase;
+    background-size: 100%;
+    color: transparent; }
+    .GameMat .deck.ai {
+      top: 185px;
+      bottom: auto;
+      background-image: url("./images/CPU_4card.png"); }
+      .GameMat .deck.ai.remain10, .GameMat .deck.ai.remain9, .GameMat .deck.ai.remain8 {
+        background-image: url("./images/CPU_3card.png"); }
+      .GameMat .deck.ai.remain7, .GameMat .deck.ai.remain6, .GameMat .deck.ai.remain5 {
+        background-image: url("./images/CPU_2card.png"); }
+      .GameMat .deck.ai.remain4, .GameMat .deck.ai.remain3, .GameMat .deck.ai.remain2, .GameMat .deck.ai.remain1 {
+        background-image: url("./images/CPU_1card.png"); }
+    .GameMat .deck.player {
+      top: auto;
+      bottom: 185px;
+      background-image: url("./images/Player_4card.png"); }
+      .GameMat .deck.player.remain10, .GameMat .deck.player.remain9, .GameMat .deck.player.remain8 {
+        background-image: url("./images/Player_3card.png"); }
+      .GameMat .deck.player.remain7, .GameMat .deck.player.remain6, .GameMat .deck.player.remain5 {
+        background-image: url("./images/Player_2card.png"); }
+      .GameMat .deck.player.remain4, .GameMat .deck.player.remain3, .GameMat .deck.player.remain2, .GameMat .deck.player.remain1 {
+        background-image: url("./images/Player_1card.png"); }
+    .GameMat .deck.remain0 {
+      background-image: none; }
