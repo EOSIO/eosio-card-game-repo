@@ -72,6 +72,14 @@ class ApiService {
     return takeAction("playcard", { username: localStorage.getItem("cardgame_account"), player_card_idx: cardIdx });
   }
 
+  static nextRound() {
+    return takeAction("nextround", { username: localStorage.getItem("cardgame_account") });
+  }
+
+  static endGame() {
+    return takeAction("endgame", { username: localStorage.getItem("cardgame_account") });
+  }
+
   static async getUserByName(username) {
     try {
       const rpc = new Rpc.JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);

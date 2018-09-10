@@ -16,6 +16,8 @@ class Game extends Component {
     this.loadUser = this.loadUser.bind(this);
     this.handleStartGame = this.handleStartGame.bind(this);
     this.handlePlayCard = this.handlePlayCard.bind(this);
+    this.handleNextRound = this.handleNextRound.bind(this);
+    this.handleEndGame = this.handleEndGame.bind(this);
     // Call `loadUser` before mounting the app
     this.loadUser();
   }
@@ -59,6 +61,22 @@ class Game extends Component {
     });
   }
 
+  handleNextRound() {
+    // Send a request to API (blockchain) to trigger next round
+    // And call `loadUser` again for react to render latest game status to UI
+    return ApiService.nextRound().then(()=>{
+      return this.loadUser();
+    });
+  }
+
+  handleEndGame() {
+    // Send a request to API (blockchain) to end the game
+    // And call `loadUser` again for react to render latest game status to UI
+    return ApiService.endGame().then(()=>{
+      return this.loadUser();
+    });
+  }
+
   render() {
     // Extract data from user data of `UserReducer` from redux
     const { user: { name, win_count, lost_count, game } } = this.props;
@@ -98,10 +116,13 @@ class Game extends Component {
                 playerCard={ game.selected_card_player }
                 playerName={ name }
                 playerLost={ game.life_lost_player }
+                onNextRound={ this.handleNextRound }
+                onEndGame={ this.handleEndGame }
               />
               <GameInfo
                 deckCardCount={ game.deck_ai.length }
                 handCardCount={ game.hand_ai.filter( x => x > 0 ).length }
+                onEndGame={ this.handleEndGame }
               />
             </div>
         }
