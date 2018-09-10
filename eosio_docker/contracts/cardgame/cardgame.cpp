@@ -55,6 +55,11 @@ void cardgame::playcard(account_name username, uint8_t player_card_idx) {
     // Assign the selected card from the player's hand
     game_data.selected_card_player = game_data.hand_player[player_card_idx];
     game_data.hand_player[player_card_idx] = 0;
+
+    // AI picks a card
+    int ai_card_idx = ai_choose_card(game_data);
+    game_data.selected_card_ai = game_data.hand_ai[ai_card_idx];
+    game_data.hand_ai[ai_card_idx] = 0;
   });
 }
 
