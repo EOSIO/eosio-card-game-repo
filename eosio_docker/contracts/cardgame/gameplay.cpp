@@ -51,6 +51,13 @@ void cardgame::draw_one_card(vector<uint8_t>& deck, vector<uint8_t>& hand) {
 int cardgame::calculate_attack_point(const card& card1, const card& card2) {
   int result = card1.attack_point;
 
+  //Add elemental compatibility bonus of 1
+  if ((card1.type == FIRE && card2.type == WOOD) ||
+      (card1.type == WOOD && card2.type == WATER) ||
+      (card1.type == WATER && card2.type == FIRE)) {
+    result++;
+  }
+
   return result;
 }
 
@@ -147,4 +154,29 @@ int cardgame::ai_choose_card(const game& game_data) {
     }
   }
   return chosen_card_idx;
+}
+
+// Resolve selected cards and update the damage dealt
+void cardgame::resolve_selected_cards(game& game_data) {
+  const auto player_card = card_dict.at(game_data.selected_card_player);
+  const auto ai_card = card_dict.at(game_data.selected_card_ai);
+
+  // For type VOID, we will skip any damage calculation
+  if (player_card.type == VOID || ai_card.type == VOID) return;
+
+  int player_attack_point = calculate_attack_point(player_card, ai_card);
+  int ai_attack_point =  calculate_attack_point(ai_card, player_card);
+
+  // Damage calculation
+  if (player_attack_point > ai_attack_point) {
+    // Deal damage to the AI if the AI card's attack point is higher
+    int diff = player_attack_point - ai_attack_point;
+    game_data.life_lost_ai = diff;
+    game_data.life_ai -= diff;
+  } else if (ai_attack_point > player_attack_point) {
+    // Deal damage to the player if the player card's attack point is higher
+    int diff = ai_attack_point - player_attack_point;
+    game_data.life_lost_player = diff;
+    game_data.life_player -= diff;
+  }
 }

@@ -4,6 +4,7 @@ import GameMat from './GameMat';
 import HandCards from './HandCards';
 import PlayerInfo from './PlayerInfo';
 import PlayerProfile from './PlayerProfile';
+import Resolution from './Resolution';
 
 export {
   Card,
@@ -12,4 +13,5 @@ export {
   HandCards,
   PlayerInfo,
   PlayerProfile,
+  Resolution,
 }

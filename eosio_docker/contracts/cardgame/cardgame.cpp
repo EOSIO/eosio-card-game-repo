@@ -60,6 +60,8 @@ void cardgame::playcard(account_name username, uint8_t player_card_idx) {
     int ai_card_idx = ai_choose_card(game_data);
     game_data.selected_card_ai = game_data.hand_ai[ai_card_idx];
     game_data.hand_ai[ai_card_idx] = 0;
+
+    resolve_selected_cards(game_data);
   });
 }
 

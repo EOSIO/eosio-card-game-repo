@@ -1,0 +1,156 @@
+.Resolution {
+  color: #fff;
+  font-family: 'Almendra';
+  pointer-events: none; }
+  .Resolution.card-selected {
+    pointer-events: auto; }
+  .Resolution.card-selected:before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    transform: scale(10); }
+  .Resolution > div {
+    opacity: 0; }
+  .Resolution.card-selected > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px 50px;
+    width: 615px;
+    height: 463px;
+    background-image: url("./images/popup_bg.png");
+    background-size: 100%;
+    transform: translateX(-50%) translateY(-50%) scale(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 125%;
+    font-weight: 500;
+    z-index: 1;
+    animation: zoomResolution .5s normal forwards ease-in-out;
+    transition: all .5s; }
+
+@keyframes zoomResolution {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-50%) scale(0); }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1.1); }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%) scale(1); } }
+    .Resolution.card-selected > div p {
+      margin: 10px 15px;
+      min-height: 1em; }
+    .Resolution.card-selected > div img {
+      width: 20px;
+      vertical-align: bottom; }
+    .Resolution.card-selected > div .result {
+      position: absolute;
+      top: -38px;
+      width: 376.5px;
+      height: 147.5px;
+      background-size: 100%;
+      color: transparent;
+      font-size: 300%;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: fadeIn .5s normal forwards ease-in-out 3s; }
+      .Resolution.card-selected > div .result.win {
+        background-image: url("./images/title_victory.png"); }
+      .Resolution.card-selected > div .result.lost {
+        background-image: url("./images/title_defeat.png"); }
+    .Resolution.card-selected > div .ai,
+    .Resolution.card-selected > div .player {
+      -webkit-perspective: 1000; }
+      .Resolution.card-selected > div .ai .Card,
+      .Resolution.card-selected > div .player .Card {
+        transform-style: preserve-3d;
+        backface-visibility: hidden; }
+      .Resolution.card-selected > div .ai .Card:after,
+      .Resolution.card-selected > div .player .Card:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 100%;
+        backface-visibility: hidden; }
+    .Resolution.card-selected > div .ai {
+      margin-left: 10px; }
+      .Resolution.card-selected > div .ai .Card {
+        animation: flipAi 1s normal forwards 2s; }
+      .Resolution.card-selected > div .ai .Card,
+      .Resolution.card-selected > div .ai .Card:after {
+        transform: rotateY(-180deg); }
+      .Resolution.card-selected > div .ai .Card:after {
+        background-image: url("./images/CPU_backforflip.png"); }
+    .Resolution.card-selected > div .player {
+      margin-right: 10px; }
+      .Resolution.card-selected > div .player .Card {
+        animation: flipPlayer 1s normal forwards 1s; }
+      .Resolution.card-selected > div .player .Card,
+      .Resolution.card-selected > div .player .Card:after {
+        transform: rotateY(180deg); }
+      .Resolution.card-selected > div .player .Card:after {
+        background-image: url("./images/Player_backforflip.png"); }
+
+@keyframes flipAi {
+  from {
+    transform: rotateY(-180deg); }
+  to {
+    transform: rotateY(0deg); } }
+
+@keyframes flipPlayer {
+  from {
+    transform: rotateY(180deg); }
+  to {
+    transform: rotateY(0deg); } }
+    .Resolution.card-selected > div .vs,
+    .Resolution.card-selected > div .round-result {
+      color: #f4e5bf;
+      font-size: 30px;
+      text-shadow: 0 0 15px rgba(244, 229, 191, 0.6); }
+    .Resolution.card-selected > div .vs {
+      margin: 0 20px; }
+    .Resolution.card-selected > div .round-result {
+      opacity: 0;
+      animation: fadeIn .5s normal forwards ease-in-out 3s; }
+    .Resolution.card-selected > div .name {
+      margin-bottom: 30px;
+      width: 150px;
+      height: 36px;
+      background-image: url("./images/name_bg_with_shadow.png");
+      background-size: 100%;
+      text-transform: uppercase;
+      font-size: 11px;
+      line-height: 2.6em;
+      white-space: nowrap; }
+    .Resolution.card-selected > div .buttons {
+      position: absolute;
+      bottom: 45px;
+      opacity: 0;
+      animation: HideThenFadeIn 3.5s normal forwards ease-in-out; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes HideThenFadeIn {
+  from {
+    bottom: 1000px; }
+  85% {
+    bottom: 45px;
+    opacity: 0; }
+  to {
+    opacity: 1; } }

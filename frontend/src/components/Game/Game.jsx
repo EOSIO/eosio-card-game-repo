@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // Game subcomponents
-import { GameInfo, GameMat, PlayerProfile } from './components';
+import { GameInfo, GameMat, PlayerProfile, Resolution } from './components';
 // Services and redux action
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
@@ -68,7 +68,7 @@ class Game extends Component {
     const isGameStarted = game && game.deck_ai.length !== 17;
 
     // If game hasn't started, display `PlayerProfile`
-    // If game has started, display `GameMat`, `Info` screen
+    // If game has started, display `GameMat`, `Resolution`, `Info` screen
     return (
       <section className="Game">
         { !isGameStarted ?
@@ -89,6 +89,15 @@ class Game extends Component {
                 playerHandCards={ game.hand_player }
                 playerName={ name }
                 onPlayCard={ this.handlePlayCard }
+              />
+              <Resolution
+                status={ game.status }
+                aiCard={ game.selected_card_ai }
+                aiName="COMPUTER"
+                aiLost={ game.life_lost_ai }
+                playerCard={ game.selected_card_player }
+                playerName={ name }
+                playerLost={ game.life_lost_player }
               />
               <GameInfo
                 deckCardCount={ game.deck_ai.length }
