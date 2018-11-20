@@ -13,12 +13,12 @@ int cardgame::random(const int range) {
   // Generate new seed value using the existing seed value
   int prime = 65537;
   auto new_seed_value = (seed_iterator->value + now()) % prime;
-
+  
   // Store the updated seed value in the table
   _seed.modify( seed_iterator, _self, [&]( auto& s ) {
     s.value = new_seed_value;
   });
-
+  
   // Get the random result in desired range
   int random_result = new_seed_value % range;
   return random_result;
@@ -42,109 +42,7 @@ void cardgame::draw_one_card(vector<uint8_t>& deck, vector<uint8_t>& hand) {
 
   // Assign the card to the first empty slot in the hand
   hand[first_empty_slot] = deck[deck_card_idx];
-
+  
   // Remove the card from the deck
   deck.erase(deck.begin() + deck_card_idx);
-}
-
-// Calculate the final attack point of a card after taking the elemental bonus into account
-int cardgame::calculate_attack_point(const card& card1, const card& card2) {
-  int result = card1.attack_point;
-
-  return result;
-}
-
-// AI Best Card Win Strategy
-int cardgame::ai_best_card_win_strategy(const int ai_attack_point, const int player_attack_point) {
-  eosio::print("Best Card Wins");
-  if (ai_attack_point > player_attack_point) return 3;
-  if (ai_attack_point < player_attack_point) return -2;
-  return -1;
-}
-
-// AI Minimize Loss Strategy
-int cardgame::ai_min_loss_strategy(const int ai_attack_point, const int player_attack_point) {
-  eosio::print("Minimum Losses");
-  if (ai_attack_point > player_attack_point) return 1;
-  if (ai_attack_point < player_attack_point) return -4;
-  return -1;
-}
-
-// AI Points Tally Strategy
-int cardgame::ai_points_tally_strategy(const int ai_attack_point, const int player_attack_point) {
-  eosio::print("Points Tally");
-  return ai_attack_point - player_attack_point;
-}
-
-// AI Loss Prevention Strategy
-int cardgame::ai_loss_prevention_strategy(const int8_t life_ai, const int ai_attack_point, const int player_attack_point) {
-  eosio::print("Loss Prevention");
-  if (life_ai + ai_attack_point - player_attack_point > 0) return 1;
-  return 0;
-}
-
-// Calculate the score for the current ai card given the  strategy and the player hand cards
-int cardgame::calculate_ai_card_score(const int strategy_idx,
-                                      const int8_t life_ai,
-                                      const card& ai_card,
-                                      const vector<uint8_t> hand_player) {
-   int card_score = 0;
-   for (int i = 0; i < hand_player.size(); i++) {
-      const auto player_card_id = hand_player[i];
-      const auto player_card = card_dict.at(player_card_id);
-
-      int ai_attack_point = calculate_attack_point(ai_card, player_card);
-      int player_attack_point = calculate_attack_point(player_card, ai_card);
-
-      // Accumulate the card score based on the given strategy
-      switch (strategy_idx) {
-        case 0: {
-          card_score += ai_best_card_win_strategy(ai_attack_point, player_attack_point);
-          break;
-        }
-        case 1: {
-          card_score += ai_min_loss_strategy(ai_attack_point, player_attack_point);
-          break;
-        }
-        case 2: {
-          card_score += ai_points_tally_strategy(ai_attack_point, player_attack_point);
-          break;
-        }
-        default: {
-          card_score += ai_loss_prevention_strategy(life_ai, ai_attack_point, player_attack_point);
-          break;
-        }
-      }
-    }
-    return card_score;
-}
-
-// Chose a card from the AI's hand based on the current game data
-int cardgame::ai_choose_card(const game& game_data) {
-  // The 4th strategy is only chosen in the dire situation
-  int available_strategies = 4;
-  if (game_data.life_ai > 2) available_strategies--;
-  int strategy_idx = random(available_strategies);
-
-  // Calculate the score of each card in the AI hand
-  int chosen_card_idx = -1;
-  int chosen_card_score = std::numeric_limits<int>::min();
-
-  for (int i = 0; i < game_data.hand_ai.size(); i++) {
-    const auto ai_card_id = game_data.hand_ai[i];
-    const auto ai_card = card_dict.at(ai_card_id);
-
-    // Ignore empty slot in the hand
-    if (ai_card.type == EMPTY) continue;
-
-    // Calculate the score for this AI card relative to the player's hand cards
-    auto card_score = calculate_ai_card_score(strategy_idx, game_data.life_ai, ai_card, game_data.hand_player);
-
-    // Keep track of the card that has the highest score
-    if (card_score > chosen_card_score) {
-      chosen_card_score = card_score;
-      chosen_card_idx = i;
-    }
-  }
-  return chosen_card_idx;
 }

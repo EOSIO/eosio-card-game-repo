@@ -1,14 +1,14 @@
 #include <eosiolib/eosio.hpp>
 
-class nameofclass : public eosio::contract {
+class [[eosio::contract]] nameofclass : public eosio::contract {
   public:
+  [[eosio::action]]
   void action1(/*action parameters*/) {
     /*action body*/
   };
 
   private:
-  // @abi table users
-  struct table_name {
+  struct [[eosio::table]] table_name {
     uint64_t key;
     /*more fields here*/
 
@@ -16,4 +16,4 @@ class nameofclass : public eosio::contract {
   };
 };
 
-EOSIO_ABI( nameofclass, (action1) )
+EOSIO_DISPATCH( nameofclass, (action1) )
