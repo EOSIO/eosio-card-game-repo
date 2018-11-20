@@ -104,6 +104,8 @@ class [[eosio::contract]] cardgame : public eosio::contract {
 
     void resolve_selected_cards(game& game_data);
 
+    void update_game_status(user_info& user);
+
     int random(const int range);
 
   public:
@@ -119,6 +121,12 @@ class [[eosio::contract]] cardgame : public eosio::contract {
     void startgame(name username);
 
     [[eosio::action]]
+    void endgame(name username);
+
+    [[eosio::action]]
     void playcard(name username, uint8_t player_card_idx);
+
+    [[eosio::action]]
+    void nextround(name username);
 
 };

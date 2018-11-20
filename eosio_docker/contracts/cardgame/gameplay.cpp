@@ -180,3 +180,38 @@ void cardgame::resolve_selected_cards(game& game_data) {
     game_data.life_player -= diff;
   }
 }
+
+// Check the current game board and update the game status accordingly
+void cardgame::update_game_status(user_info& user) {
+  game& game_data = user.game_data;
+
+  if (game_data.life_ai <= 0) {
+    // Check the AI's HP
+    game_data.status = PLAYER_WON;
+  } else if (game_data.life_player <= 0) {
+    // Check the player's HP
+    game_data.status = PLAYER_LOST;
+  } else {
+    // Neither player has their HP reduced to 0
+    // Check whether the game has finished (i.e., no more cards in both hands)
+    const auto is_empty_slot = [&](const auto& id) { return card_dict.at(id).type == EMPTY; };
+    bool player_finished = std::all_of(game_data.hand_player.begin(), game_data.hand_player.end(), is_empty_slot);
+    bool ai_finished = std::all_of(game_data.hand_ai.begin(), game_data.hand_ai.end(), is_empty_slot);
+
+    // If one of them has run out of card, the other must have run out of card too
+    if (player_finished || ai_finished) {
+      if (game_data.life_player > game_data.life_ai) {
+        game_data.status = PLAYER_WON;
+      } else {
+        game_data.status = PLAYER_LOST;
+      }
+    }
+  }
+
+  // Update the lost/ win count accordingly
+  if (game_data.status == PLAYER_WON) {
+    user.win_count++;
+  } else if (game_data.status == PLAYER_LOST) {
+    user.lost_count++;
+  } 
+}
