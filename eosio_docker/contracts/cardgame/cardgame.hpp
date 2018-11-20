@@ -97,7 +97,7 @@ class [[eosio::contract]] cardgame : public eosio::contract {
 
     int ai_loss_prevention_strategy(const int8_t life_ai, const int ai_attack_point, const int player_attack_point);
 
-    int calculate_ai_card_score(const int strategy_idx, const int8_t life_ai,
+    int calculate_ai_card_score(const int strategy_idx, const int8_t life_ai, 
                                 const card& ai_card, const vector<uint8_t> hand_player);
 
     int ai_choose_card(const game& game_data);
