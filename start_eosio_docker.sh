@@ -16,7 +16,7 @@ docker run --rm --name eosio_cardgame_container -d \
 --mount type=bind,src="$(pwd)"/contracts,dst=/opt/eosio/bin/contracts \
 --mount type=bind,src="$(pwd)"/scripts,dst=/opt/eosio/bin/scripts \
 --mount type=bind,src="$(pwd)"/data,dst=/mnt/dev/data \
--w "/opt/eosio/bin/" eosio/eos-dev:v1.2.5 /bin/bash -c "$script"
+-w "/opt/eosio/bin/" eosio/eos-dev:v1.4.1 /bin/bash -c "$script"
 
 if [ "$1" != "--nolog" ]
 then
