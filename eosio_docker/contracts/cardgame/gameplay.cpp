@@ -13,12 +13,12 @@ int cardgame::random(const int range) {
   // Generate new seed value using the existing seed value
   int prime = 65537;
   auto new_seed_value = (seed_iterator->value + now()) % prime;
-
+  
   // Store the updated seed value in the table
   _seed.modify( seed_iterator, _self, [&]( auto& s ) {
     s.value = new_seed_value;
   });
-
+  
   // Get the random result in desired range
   int random_result = new_seed_value % range;
   return random_result;
@@ -42,7 +42,7 @@ void cardgame::draw_one_card(vector<uint8_t>& deck, vector<uint8_t>& hand) {
 
   // Assign the card to the first empty slot in the hand
   hand[first_empty_slot] = deck[deck_card_idx];
-
+  
   // Remove the card from the deck
   deck.erase(deck.begin() + deck_card_idx);
 }
