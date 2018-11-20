@@ -13,12 +13,12 @@ int cardgame::random(const int range) {
   // Generate new seed value using the existing seed value
   int prime = 65537;
   auto new_seed_value = (seed_iterator->value + now()) % prime;
-
+  
   // Store the updated seed value in the table
   _seed.modify( seed_iterator, _self, [&]( auto& s ) {
     s.value = new_seed_value;
   });
-
+  
   // Get the random result in desired range
   int random_result = new_seed_value % range;
   return random_result;
@@ -42,7 +42,7 @@ void cardgame::draw_one_card(vector<uint8_t>& deck, vector<uint8_t>& hand) {
 
   // Assign the card to the first empty slot in the hand
   hand[first_empty_slot] = deck[deck_card_idx];
-
+  
   // Remove the card from the deck
   deck.erase(deck.begin() + deck_card_idx);
 }
@@ -91,9 +91,9 @@ int cardgame::ai_loss_prevention_strategy(const int8_t life_ai, const int ai_att
 }
 
 // Calculate the score for the current ai card given the  strategy and the player hand cards
-int cardgame::calculate_ai_card_score(const int strategy_idx,
+int cardgame::calculate_ai_card_score(const int strategy_idx, 
                                       const int8_t life_ai,
-                                      const card& ai_card,
+                                      const card& ai_card, 
                                       const vector<uint8_t> hand_player) {
    int card_score = 0;
    for (int i = 0; i < hand_player.size(); i++) {
@@ -129,13 +129,13 @@ int cardgame::calculate_ai_card_score(const int strategy_idx,
 // Chose a card from the AI's hand based on the current game data
 int cardgame::ai_choose_card(const game& game_data) {
   // The 4th strategy is only chosen in the dire situation
-  int available_strategies = 4;
-  if (game_data.life_ai > 2) available_strategies--;
+  int available_strategies = 4; 
+  if (game_data.life_ai > 2) available_strategies--; 
   int strategy_idx = random(available_strategies);
-
-  // Calculate the score of each card in the AI hand
+ 
+  // Calculate the score of each card in the AI hand 
   int chosen_card_idx = -1;
-  int chosen_card_score = std::numeric_limits<int>::min();
+  int chosen_card_score = std::numeric_limits<int>::min(); 
 
   for (int i = 0; i < game_data.hand_ai.size(); i++) {
     const auto ai_card_id = game_data.hand_ai[i];
@@ -213,5 +213,5 @@ void cardgame::update_game_status(user_info& user) {
     user.win_count++;
   } else if (game_data.status == PLAYER_LOST) {
     user.lost_count++;
-  }
+  } 
 }
