@@ -67,7 +67,7 @@ class ApiService {
 
   static async getUserByName(username) {
     try {
-      const rpc = new Rpc.JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
+      const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
       const result = await rpc.get_table_rows({
         "json": true,
         "code": process.env.REACT_APP_EOS_CONTRACT_NAME,    // contract who owns the table
