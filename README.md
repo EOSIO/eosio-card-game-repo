@@ -8,6 +8,12 @@ Each lesson will introduce new concepts and showcase how to include them in the 
 
 This repository contains the source code used in each of the tutorial lesson. Each lesson's code are stored in a branch. You can find all the lesson branches from the list below.
 
+## Changelog
+- v1.1.0
+  - Introduce eosio.cdt, use eosio-cpp instead of eosiocpp for the compiler
+  - Use own docker image which is built using the binary instead of downloading from docker hub as the eosio/eos-dev in docker hub is deprecated
+  - eos 1.6.0, eosio.cdt 1.5.0, eosjs 20.0.0-beta3
+
 ## Lesson List
 
   [Lesson 0: Before You Start](https://github.com/EOSIO/eosio-card-game-repo/tree/lesson-0)
