@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "eosjs": "20.0.0-beta3",
+    "eosjs": "20.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-modal": "^3.5.1",
