@@ -20,12 +20,13 @@ if [ ! -x "$(command -v docker)" ] ||
 fi
 
 # build docker image, if necessary
-if [[ "$(docker images -q eosio-cardgame:eos1.6.0-cdt1.5.0)" == "" ]]; then
-  echo "=== Build docker image eosio-cardgame version eos1.6.0-cdt1.5.0, this will take some time for the first time run ==="
-  docker build -t eosio-cardgame:eos1.6.0-cdt1.5.0 .
+if [[ "$(docker images -q eosio-cardgame:eos1.7.3-cdt1.6.1)" == "" ]]; then
+  echo "=== Build docker image eosio-cardgame version eos1.7.3-cdt1.6.1, this will take some time for the first time run ==="
+  docker build -t eosio-cardgame:eos1.7.3-cdt1.6.1 .
 else
   echo "=== Docker image already exists, skip building ==="
 fi
+
 
 # force remove the perivous container if any
 # create a clean data folder in eosio_docker to preserve block data
