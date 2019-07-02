@@ -9,6 +9,8 @@ Each lesson will introduce new concepts and showcase how to include them in the 
 This repository contains the source code used in each of the tutorial lesson. Each lesson's code are stored in a branch. You can find all the lesson branches from the list below.
 
 ## Changelog
+- v1.1.2
+  - eos 1.8.0
 - v1.1.1
   - eos 1.7.3, eosio.cdt 1.6.1, eosjs 20.0.0
 - v1.1.0
