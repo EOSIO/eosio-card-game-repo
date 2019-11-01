@@ -93,6 +93,7 @@ class Login extends Component {
               onChange={ this.handleChange }
               pattern="[\.a-z1-5]{2,12}"
               required
+              autoComplete="off"
             />
           </div>
           <div className="field">
@@ -104,6 +105,7 @@ class Login extends Component {
               onChange={ this.handleChange }
               pattern="^.{51,}$"
               required
+              autoComplete="new-password"
             />
           </div>
           <div className="field form-error">
