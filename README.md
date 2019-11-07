@@ -9,6 +9,8 @@ Each lesson will introduce new concepts and showcase how to include them in the 
 This repository contains the source code used in each of the tutorial lesson. Each lesson's code are stored in a branch. You can find all the lesson branches from the list below.
 
 ## Changelog
+- v1.1.5
+  - Update sample.cpp to make it deployable and compatible with new eos / cdt releases
 - v1.1.4
   - react 16.11.0, react-dom 16.11.0, react-modal 3.11.1, react-redux 7.1.1, react-scripts 3.2.0, redux 4.0.4, npm-run-all 4.1.5
 - v1.1.3
