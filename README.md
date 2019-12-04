@@ -9,6 +9,8 @@ Each lesson will introduce new concepts and showcase how to include them in the 
 This repository contains the source code used in each of the tutorial lesson. Each lesson's code are stored in a branch. You can find all the lesson branches from the list below.
 
 ## Changelog
+- v1.1.7
+  - eosio cdt 1.6.3 and change deprecated eosiolib header
 - v1.1.6
   - eos 1.8.6
 - v1.1.5
