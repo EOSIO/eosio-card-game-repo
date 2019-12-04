@@ -10,13 +10,13 @@ else
   script="./scripts/init_blockchain.sh"
 fi
 
-echo "=== run docker container from the eosio-cardgame:eos1.8.6-cdt1.6.1 image ==="
+echo "=== run docker container from the eosio-cardgame:eos1.8.6-cdt1.6.3 image ==="
 docker run --rm --name eosio_cardgame_container -d \
 -p 8888:8888 -p 9876:9876 \
 --mount type=bind,src="$(pwd)"/contracts,dst=/opt/eosio/bin/contracts \
 --mount type=bind,src="$(pwd)"/scripts,dst=/opt/eosio/bin/scripts \
 --mount type=bind,src="$(pwd)"/data,dst=/mnt/dev/data \
--w "/opt/eosio/bin/" eosio-cardgame:eos1.8.6-cdt1.6.1 /bin/bash -c "$script"
+-w "/opt/eosio/bin/" eosio-cardgame:eos1.8.6-cdt1.6.3 /bin/bash -c "$script"
 
 if [ "$1" != "--nolog" ]
 then
