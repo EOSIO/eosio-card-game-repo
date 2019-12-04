@@ -50,14 +50,14 @@ void cardgame::playcard(name username, uint8_t player_card_idx) {
   require_auth(username);
 
   // Checks that selected card is valid
-  eosio_assert(player_card_idx < 4, "playcard: Invalid hand index");
+  check(player_card_idx < 4, "playcard: Invalid hand index");
 
   auto& user = _users.get(username.value, "User doesn't exist");
 
   // Verify game status is suitable for the player to play a card
-  eosio_assert(user.game_data.status == ONGOING,
+  check(user.game_data.status == ONGOING,
                "playcard: This game has ended. Please start a new one");
-  eosio_assert(user.game_data.selected_card_player == 0,
+  check(user.game_data.selected_card_player == 0,
                "playcard: The player has played his card this turn!");
 
   _users.modify(user, username, [&](auto& modified_user) {
@@ -85,9 +85,9 @@ void cardgame::nextround(name username) {
   auto& user = _users.get(username.value, "User doesn't exist");
 
   // Verify game status
-  eosio_assert(user.game_data.status == ONGOING, 
+  check(user.game_data.status == ONGOING, 
               "nextround: This game has ended. Please start a new one.");
-  eosio_assert(user.game_data.selected_card_player != 0 && user.game_data.selected_card_ai != 0,
+  check(user.game_data.selected_card_player != 0 && user.game_data.selected_card_ai != 0,
                "nextround: Please play a card first.");
 
   _users.modify(user, username, [&](auto& modified_user) {
