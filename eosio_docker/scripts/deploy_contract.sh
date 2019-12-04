@@ -23,4 +23,4 @@ if [ ! -z $3 ]; then cleos wallet unlock -n $3 --password $4 || true; fi
 ) &&
 
 # set (deploy) compiled contract to blockchain
-cleos set code $2 "$COMPILEDCONTRACTSFOLDER/$1/$1.wasm" --permission $2
+cleos set contract $2 "$COMPILEDCONTRACTSFOLDER/$1" --permission $2
