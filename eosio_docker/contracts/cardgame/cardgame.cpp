@@ -85,9 +85,9 @@ void cardgame::nextround(name username) {
   auto& user = _users.get(username.value, "User doesn't exist");
 
   // Verify game status
-  eosio_assert(user.game_data.status == ONGOING, 
+  check(user.game_data.status == ONGOING, 
               "nextround: This game has ended. Please start a new one.");
-  eosio_assert(user.game_data.selected_card_player != 0 && user.game_data.selected_card_ai != 0,
+  check(user.game_data.selected_card_player != 0 && user.game_data.selected_card_ai != 0,
                "nextround: Please play a card first.");
 
   _users.modify(user, username, [&](auto& modified_user) {
