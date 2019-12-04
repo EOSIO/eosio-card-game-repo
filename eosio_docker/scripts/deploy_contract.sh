@@ -10,7 +10,8 @@ CONTRACTSPATH="$( pwd -P )/contracts"
 mkdir -p ./compiled_contracts
 mkdir -p ./compiled_contracts/$1
 
-COMPILEDCONTRACTSPATH="$( pwd -P )/compiled_contracts"
+COMPILEDCONTRACTSFOLDER="compiled_contracts"
+COMPILEDCONTRACTSPATH="$( pwd -P )/$COMPILEDCONTRACTSFOLDER"
 
 # unlock the wallet, ignore error if already unlocked
 if [ ! -z $3 ]; then cleos wallet unlock -n $3 --password $4 || true; fi
@@ -22,4 +23,4 @@ if [ ! -z $3 ]; then cleos wallet unlock -n $3 --password $4 || true; fi
 ) &&
 
 # set (deploy) compiled contract to blockchain
-cleos set contract $2 "$COMPILEDCONTRACTSPATH/$1/" --permission $2
+cleos set contract $2 "$COMPILEDCONTRACTSFOLDER/$1" --permission $2

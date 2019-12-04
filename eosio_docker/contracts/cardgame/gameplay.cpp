@@ -1,4 +1,5 @@
 #include "cardgame.hpp"
+#include <eosio/system.hpp>
 
 // Simple Pseudo Random Number Algorithm, randomly pick a number within 0 to n-1
 int cardgame::random(const int range) {
@@ -12,7 +13,7 @@ int cardgame::random(const int range) {
 
   // Generate new seed value using the existing seed value
   int prime = 65537;
-  auto new_seed_value = (seed_iterator->value + now()) % prime;
+  auto new_seed_value = (seed_iterator->value + current_time_point().elapsed.count()) % prime;
   
   // Store the updated seed value in the table
   _seed.modify( seed_iterator, _self, [&]( auto& s ) {
@@ -38,7 +39,7 @@ void cardgame::draw_one_card(vector<uint8_t>& deck, vector<uint8_t>& hand) {
       break;
     }
   }
-  eosio_assert(first_empty_slot != -1, "No empty slot in the player's hand");
+  check(first_empty_slot != -1, "No empty slot in the player's hand");
 
   // Assign the card to the first empty slot in the hand
   hand[first_empty_slot] = deck[deck_card_idx];
