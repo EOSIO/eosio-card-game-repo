@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "eosjs": "20.0.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "eosjs": "20.0.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-modal": "^3.11.1",
-    "react-redux": "^7.1.1",
-    "react-scripts": "^3.2.0",
-    "redux": "^4.0.4",
+    "react-redux": "^7.1.3",
+    "react-scripts": "^3.3.0",
+    "redux": "^4.0.5",
     "text-encoding": "^0.7.0"
   },
   "scripts": {
