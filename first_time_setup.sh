@@ -20,9 +20,9 @@ if [ ! -x "$(command -v docker)" ] ||
 fi
 
 # build docker image, if necessary
-if [[ "$(docker images -q eosio-cardgame:eos1.8.6-cdt1.6.3)" == "" ]]; then
-  echo "=== Build docker image eosio-cardgame version eos1.8.6-cdt1.6.3, this will take some time for the first time run ==="
-  docker build -t eosio-cardgame:eos1.8.6-cdt1.6.3 .
+if [[ "$(docker images -q eosio-cardgame:eos2.0.0-cdt1.6.3)" == "" ]]; then
+  echo "=== Build docker image eosio-cardgame version eos2.0.0-cdt1.6.3, this will take some time for the first time run ==="
+  docker build -t eosio-cardgame:eos2.0.0-cdt1.6.3 .
 else
   echo "=== Docker image already exists, skip building ==="
 fi
