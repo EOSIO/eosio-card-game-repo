@@ -9,6 +9,8 @@ Each lesson will introduce new concepts and showcase how to include them in the 
 This repository contains the source code used in each of the tutorial lesson. Each lesson's code are stored in a branch. You can find all the lesson branches from the list below.
 
 ## Changelog
+- v1.1.9
+  - Updated deploy_contract script to work with new abi behaviour in eosio cdt 1.6.3
 - v1.1.8
   - eos 2.0.0, eosjs 20.0.3, react 16.12.0, react-dom 16.12.0, react-redux 7.1.3, react scripts 3.3.0, redux 4.0.5
 - v1.1.7
