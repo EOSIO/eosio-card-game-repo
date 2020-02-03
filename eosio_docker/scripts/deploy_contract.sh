@@ -22,5 +22,9 @@ if [ ! -z $3 ]; then cleos wallet unlock -n $3 --password $4 || true; fi
   eosio-cpp -abigen "$CONTRACTSPATH/$1/$1.cpp" -o "$COMPILEDCONTRACTSPATH/$1/$1.wasm" --contract "$1"
 ) &&
 
-# set (deploy) compiled contract to blockchain
-cleos set contract $2 "$COMPILEDCONTRACTSFOLDER/$1" --permission $2
+# set (deploy) compiled contract to blockchain if an abi file is found in compiled contracts folder
+if [ -f "$COMPILEDCONTRACTSFOLDER/$1/$1.abi" ]; then
+  cleos set contract $2 "$COMPILEDCONTRACTSFOLDER/$1" --permission $2
+else
+  cleos set code $2 "$COMPILEDCONTRACTSFOLDER/$1/$1.wasm" --permission $2
+fi
