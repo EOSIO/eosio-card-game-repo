@@ -104,5 +104,3 @@ void cardgame::nextround(name username) {
     if (game_data.deck_ai.size() > 0) draw_one_card(game_data.deck_ai, game_data.hand_ai);
   });
 }
-
-EOSIO_DISPATCH(cardgame, (login)(startgame)(playcard)(nextround)(endgame))
