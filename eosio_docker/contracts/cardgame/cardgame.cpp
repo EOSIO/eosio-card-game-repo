@@ -12,5 +12,3 @@ void cardgame::login(name username) {
     });
   } 
 }
-
-EOSIO_DISPATCH(cardgame, (login))
