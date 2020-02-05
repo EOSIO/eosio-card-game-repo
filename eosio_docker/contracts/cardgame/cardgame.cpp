@@ -62,5 +62,3 @@ void cardgame::playcard(name username, uint8_t player_card_idx) {
     game_data.hand_ai[ai_card_idx] = 0;
   });
 }
-
-EOSIO_DISPATCH(cardgame, (login)(startgame)(playcard))
