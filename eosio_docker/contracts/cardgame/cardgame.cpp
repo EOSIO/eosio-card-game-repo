@@ -64,5 +64,3 @@ void cardgame::playcard(name username, uint8_t player_card_idx) {
     resolve_selected_cards(game_data);
   });
 }
-
-EOSIO_DISPATCH(cardgame, (login)(startgame)(playcard))
