@@ -9,6 +9,8 @@ Each lesson will introduce new concepts and showcase how to include them in the 
 This repository contains the source code used in each of the tutorial lesson. Each lesson's code are stored in a branch. You can find all the lesson branches from the list below.
 
 ## Changelog
+- v1.1.11
+  - Moved 'contracts' folder to root
 - v1.1.10
   - Removed EOSIO_DISPATCH from smart contracts
 - v1.1.9
