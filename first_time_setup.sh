@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+cd#!/usr/bin/env bash
 
 echo "=== start of first time setup ==="
 
