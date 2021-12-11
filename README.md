@@ -1,43 +1,50 @@
-# Elemental Battles Tutorial Lessons
+# Elemental Battles Tutorial Lesson 8
 
-The Elemental Battles Tutorial is divided into easy to follow lessons that take you through the process of creating your own fully-functional blockchain-based dApp.
+- *Account*: `player1`
+- *Private Key*: `5KFyaxQW8L6uXFB6wSgC44EsAbzC7ideyhhQ68tiYfdKQp69xKo`
+The account information is available in [eosio_docker/scripts/accounts.json](eosio_docker/scripts/accounts.json). The key pair in this file is generated **FOR TESTING ONLY** so please **DO NOT** use them for any other purposes.
 
-Each lesson will introduce new concepts and showcase how to include them in the existing code. Additionally, we will display explanations and source code side-by-side to make following the tutorial easy.
+## Prerequisites
 
-## About this repository
+Make sure Docker and Node.js are installed
 
-This repository contains the source code used in each of the tutorial lesson. Each lesson's code are stored in a branch. You can find all the lesson branches from the list below.
+* Install Docker: https://docs.docker.com/docker-for-mac/install/
+* Install Node.js: https://nodejs.org/en/
 
-## Changelog
-- v1.1.12
-  - Updated eos to v2.0.5
-  - Updated README, added Contributing, CopyrightNotice and ImportantNotice files
-- v1.1.11
-  - Moved 'contracts' folder to root
-- v1.1.10
-  - Removed EOSIO_DISPATCH from smart contracts
-- v1.1.9
-  - Updated deploy_contract script to work with new abi behaviour in eosio cdt 1.6.3
-- v1.1.8
-  - eos 2.0.0, eosjs 20.0.3, react 16.12.0, react-dom 16.12.0, react-redux 7.1.3, react scripts 3.3.0, redux 4.0.5
-- v1.1.7
-  - eosio cdt 1.6.3 and change deprecated eosiolib header
-- v1.1.6
-  - eos 1.8.6
-- v1.1.5
-  - Update sample.cpp to make it deployable and compatible with new eos / cdt releases
-- v1.1.4
-  - react 16.11.0, react-dom 16.11.0, react-modal 3.11.1, react-redux 7.1.1, react-scripts 3.2.0, redux 4.0.4, npm-run-all 4.1.5
-- v1.1.3
-  - eos 1.8.1
-- v1.1.2
-  - eos 1.8.0
-- v1.1.1
-  - eos 1.7.3, eosio.cdt 1.6.1, eosjs 20.0.0
-- v1.1.0
-  - Introduce eosio.cdt, use eosio-cpp instead of eosiocpp for the compiler
-  - Use own docker image which is built using the binary instead of downloading from docker hub as the eosio/eos-dev in docker hub is deprecated
-  - eos 1.6.0, eosio.cdt 1.5.0, eosjs 20.0.0-beta3
+The DApp and eosio will occupy the ports 3000, 8888 and 9876. Make sure nothing else is already running on these ports.
+
+Clone the repository:
+```sh
+git clone https://github.com/EOSIO/eosio-card-game-repo.git
+```
+
+The following guide assumes you are using macOS.
+
+## Quick start - Run the DApp
+
+In this section we provide a single command script to run all the commands needed to start both the blockchain and UI. For more detail on each component see the `Detailed guide` below.
+
+**To start**
+```sh
+./quick_start.sh
+```
+
+The above command will execute the following in sequence:
+
+1. `first_time_setup.sh`
+2. `start_eosio_docker.sh`
+3. `start_frontend.sh`
+
+- Login with the following credentials:
+
+**To stop**, press `ctrl+c` on your keyboard, and execute:
+```sh
+docker stop eosio_cardgame_container
+```
+
+## Detailed guide
+
+Please refer to [eosio-project-boilerplate-simple - Detailed guide](https://github.com/EOSIO/eosio-project-boilerplate-simple/blob/master/README.md#detailed-guide) for more information. This repository is using the similar structure as that.
 
 ## Lesson List
 
